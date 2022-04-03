@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="HotChocolate" Version="12.7.0" />
+		<PackageReference Include="HotChocolate.Data.EntityFramework" Version="12.7.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\School.Api.Data\School.Api.Data.csproj" />
+	</ItemGroup>
+
+</Project>
