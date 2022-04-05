@@ -69,5 +69,6 @@
     <None Include="Scripts\TeachersData.sql" />
     <None Include="Scripts\CoursesData.sql" />
     <None Include="Scripts\DepartmentsData.sql" />
+    <None Include="SchoolDatabase.publish.xml" />
   </ItemGroup>
 </Project>
