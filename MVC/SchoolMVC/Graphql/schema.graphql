@@ -1,0 +1,129 @@
+﻿schema {
+  query: RootQuery
+}
+
+type RootQuery {
+  courses(where: CourseEntityFilterInput): [CourseEntity!]!
+  departments(where: DepartmentEntityFilterInput): [DepartmentEntity!]!
+  students(where: StudentEntityFilterInput): [StudentEntity!]!
+  teachers(where: TeacherEntityFilterInput): [TeacherEntity!]!
+  departmentTeachers(departmentName: String! where: TeacherEntityFilterInput): [TeacherEntity!]!
+}
+
+input CourseEntityFilterInput {
+  and: [CourseEntityFilterInput!]
+  or: [CourseEntityFilterInput!]
+  id: ComparableInt32OperationFilterInput
+  name: StringOperationFilterInput
+  teacherId: ComparableInt32OperationFilterInput
+  startTime: StringOperationFilterInput
+  endTime: StringOperationFilterInput
+  maxSize: ComparableInt32OperationFilterInput
+}
+
+input DepartmentEntityFilterInput {
+  and: [DepartmentEntityFilterInput!]
+  or: [DepartmentEntityFilterInput!]
+  id: ComparableInt32OperationFilterInput
+  name: StringOperationFilterInput
+}
+
+input StudentEntityFilterInput {
+  and: [StudentEntityFilterInput!]
+  or: [StudentEntityFilterInput!]
+  id: ComparableInt32OperationFilterInput
+  firstName: StringOperationFilterInput
+  lastName: StringOperationFilterInput
+  dOB: ComparableDateTimeOperationFilterInput
+  sex: StringOperationFilterInput
+}
+
+input TeacherEntityFilterInput {
+  and: [TeacherEntityFilterInput!]
+  or: [TeacherEntityFilterInput!]
+  id: ComparableInt32OperationFilterInput
+  firstName: StringOperationFilterInput
+  lastName: StringOperationFilterInput
+  dOB: ComparableDateTimeOperationFilterInput
+  sex: StringOperationFilterInput
+  departmentId: ComparableInt32OperationFilterInput
+}
+
+input ComparableInt32OperationFilterInput {
+  eq: Int
+  neq: Int
+  in: [Int!]
+  nin: [Int!]
+  gt: Int
+  ngt: Int
+  gte: Int
+  ngte: Int
+  lt: Int
+  nlt: Int
+  lte: Int
+  nlte: Int
+}
+
+input StringOperationFilterInput {
+  and: [StringOperationFilterInput!]
+  or: [StringOperationFilterInput!]
+  eq: String
+  neq: String
+  contains: String
+  ncontains: String
+  in: [String]
+  nin: [String]
+  startsWith: String
+  nstartsWith: String
+  endsWith: String
+  nendsWith: String
+}
+
+input ComparableDateTimeOperationFilterInput {
+  eq: DateTime
+  neq: DateTime
+  in: [DateTime!]
+  nin: [DateTime!]
+  gt: DateTime
+  ngt: DateTime
+  gte: DateTime
+  ngte: DateTime
+  lt: DateTime
+  nlt: DateTime
+  lte: DateTime
+  nlte: DateTime
+}
+
+type CourseEntity {
+  id: Int!
+  name: String
+  teacherId: Int!
+  startTime: String
+  endTime: String
+  maxSize: Int!
+}
+
+type DepartmentEntity {
+  id: Int!
+  name: String!
+}
+
+type StudentEntity {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  dOB: DateTime!
+  sex: String!
+}
+
+type TeacherEntity {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  dOB: DateTime!
+  sex: String!
+  departmentId: Int!
+}
+
+"The `DateTime` scalar represents an ISO-8601 compliant date time type."
+scalar DateTime

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SchoolMVC.Models;
+using SchoolMVC.GraphQL;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,21 +19,13 @@ namespace SchoolMVC.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async IActionResult Index()
         {
-            return View();
-        }
+            var teachers = await School.AllTeachers.ExecuteAsync();
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { 
-                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier 
+            return View("Index", new HomeVM
+            {
+                Teachers = teachers
             });
         }
     }

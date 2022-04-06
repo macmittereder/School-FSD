@@ -1,0 +1,6 @@
+﻿query AllTeachers { 
+	teachers {
+		firstName
+		lastName
+	}
+}
