@@ -20,7 +20,7 @@ namespace School.Api.Graph.Types
         public string LastName => teacherEntity.LastName;
 
         [GraphQLName("dob")]
-        public DateTime DOB => teacherEntity.DOB;
+        public DateTime? DOB => teacherEntity.DOB;
 
         [GraphQLName("sex")]
         public string Sex => teacherEntity.Sex;

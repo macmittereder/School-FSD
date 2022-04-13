@@ -63,7 +63,7 @@ namespace SchoolApi
             app.UseAuthorization();
 
             app.UseCors(
-                opts => opts.WithOrigins("http://localhost:3000").AllowAnyMethod()
+                opts => opts.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader()
             );
 
             app.UseEndpoints(endpoints =>

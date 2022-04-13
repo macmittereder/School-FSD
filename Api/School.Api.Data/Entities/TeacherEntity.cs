@@ -19,9 +19,9 @@ namespace School.Api.Data.Entities
         [MaxLength(25)]
         public string LastName { get; set; }
         
-        public DateTime DOB { get; set; }
+        public DateTime? DOB { get; set; }
         
-        public string Sex { get; set; }
+        public string? Sex { get; set; }
         
         [ForeignKey("Id")]
         public int DepartmentId { get; set; }
