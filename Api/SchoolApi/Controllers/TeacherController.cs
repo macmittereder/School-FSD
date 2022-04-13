@@ -19,6 +19,12 @@ namespace School.Api.Controllers
             this.School = School;
         }
 
+        [HttpGet]
+        public async Task<IQueryable<TeacherEntity>> Get()
+        {
+            return School.Teachers.AsNoTracking();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] TeacherEntity entity)
         {

@@ -41,6 +41,9 @@ namespace SchoolApi
             {
                 opts.UseSqlServer(Configuration.GetConnectionString("Docker"));
             });
+
+            services.AddCors();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,6 +61,10 @@ namespace SchoolApi
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(
+                opts => opts.WithOrigins("http://localhost:3000").AllowAnyMethod()
+            );
 
             app.UseEndpoints(endpoints =>
             {
